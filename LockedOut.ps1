@@ -1,6 +1,6 @@
 ﻿####Script by Danijel Gerbez##########
 ####Last Change on 07/10/2020#########
-#Added if statements to send to different IT Groups rather than just US group
+#Added if statements to send to different IT Groups
 
 $filename = "_4740Query"
 $ext = ".txt"
