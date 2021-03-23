@@ -1,6 +1,6 @@
-﻿####Script by Danijel Gerbez##########
-####Last Change on 07/10/2020#########
-#Added if statements to send to different IT Groups
+####Script by Danijel Gerbez##########
+####Last Change on 03/23/2021#########
+#Added $port info and $smtp.port to put everything together. So messages can be sent through non-standard smtp port
 
 $filename = "_4740Query"
 $ext = ".txt"
@@ -58,6 +58,7 @@ $Subject = "User account locked from $env:COMPUTERNAME"
 $body = "$result"
 $attachment = "C:\LockedOut\$timestamp$filename$ext"
 $smtpserver = "SMTPRelay.somedomain.com"
+$port = 25
 
 $message = new-object System.Net.Mail.MailMessage
 $message.From = $fromaddress
@@ -70,6 +71,7 @@ $message.Subject = $Subject
 #$message.Attachments.Add($attach)
 $message.body = $body
 $smtp = new-object Net.Mail.SmtpClient($smtpserver)
+$smtp.Port = $port
 $smtp.Send($message)
 
 ##############################Keep only last 20 records######################################
